@@ -11,7 +11,7 @@ def smallerNumbersThanCurrent(nums):
     print(countArr)
     for i in range(len(nums)):
         if nums[i] == 0:
-            nums[i] = countArr[nums[i]]
+            nums[i] = 0
         else:
             print(nums[i])
             nums[i] = countArr[nums[i] - 1]
