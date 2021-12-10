@@ -12,7 +12,9 @@ def countingSort(arr):
             arr[count] = i
             count += 1
 
-    return arr
+    for i in range(1, len(countArr)):
+        countArr[i] += countArr[i - 1]
+    return countArr
 
 
 arr = [8, 1, 2, 2, 3]
