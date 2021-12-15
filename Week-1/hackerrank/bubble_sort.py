@@ -1,3 +1,5 @@
+# https://www.hackerrank.com/challenges/ctci-bubble-sort/problem
+
 def countSwaps(a):
     # Write your code here
     swaps = 0

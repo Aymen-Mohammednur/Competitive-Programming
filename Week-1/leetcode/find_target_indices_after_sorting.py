@@ -3,7 +3,7 @@
 
 from typing import List
 
-def targetIndices(self, nums: List[int], target: int):
+def targetIndices(nums: List[int], target: int):
     # nums.sort()
     for i in range(len(nums)):
         min_index = i

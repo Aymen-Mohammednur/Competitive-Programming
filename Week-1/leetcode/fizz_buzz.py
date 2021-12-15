@@ -1,3 +1,6 @@
+# LEETCODE 412
+# https://leetcode.com/problems/fizz-buzz/
+
 def fizzBuzz(n):
     output = []
     for i in range(1, n+1):

@@ -1,6 +1,8 @@
+# LEETCODE 973
+# https://leetcode.com/problems/k-closest-points-to-origin/
+
 import math
 import heapq
-
 
 class Solution:
     def helper(self, p1):

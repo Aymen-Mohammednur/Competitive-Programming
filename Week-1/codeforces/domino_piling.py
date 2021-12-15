@@ -1,5 +1,7 @@
+# https://codeforces.com/problemset/problem/50/A
+
 import math
- 
+
 def domino_piling():
     inp = input()
     lst = inp.split(" ")
