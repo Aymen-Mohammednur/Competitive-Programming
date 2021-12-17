@@ -1,0 +1,14 @@
+# LEETCODE 933
+# https://leetcode.com/problems/number-of-recent-calls/
+
+from typing import Deque
+
+class RecentCounter:
+    def __init__(self):
+        self.queue = Deque()
+
+    def ping(self, t: int) -> int:
+        while(self.queue and t - self.queue[0] > 3000):
+            self.queue.popleft()
+        self.queue.append(t)
+        return len(self.queue)
