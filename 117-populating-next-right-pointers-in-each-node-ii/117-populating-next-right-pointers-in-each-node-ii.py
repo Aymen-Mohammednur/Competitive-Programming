@@ -15,16 +15,14 @@ class Solution:
         queue = deque()
         queue.append(root)
         while queue:
-            for _ in range(len(queue) - 1):
+            prev = None
+            for _ in range(len(queue)):
                 curr = queue.popleft()
-                curr.next = queue[0] if queue else None
+                if prev != None:
+                    prev.next = curr
+                prev = curr
                 if curr.left:
                     queue.append(curr.left)
                 if curr.right:
                     queue.append(curr.right)
-            curr = queue.popleft()
-            if curr.left:
-                queue.append(curr.left)
-            if curr.right:
-                queue.append(curr.right)
         return root
