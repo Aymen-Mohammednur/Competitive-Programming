@@ -7,15 +7,13 @@
 class Solution:
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
         queue = deque([root])
-        result = []
         while queue:
-            temp = 0
+            result = 0
             for _ in range(len(queue)):
                 curr = queue.popleft()
-                temp += curr.val
+                result += curr.val
                 if curr.left:
                     queue.append(curr.left)
                 if curr.right:
                     queue.append(curr.right)
-            result.append(temp)
-        return result[-1]
+        return result
