@@ -1,22 +1,22 @@
 class Solution:
     def islandPerimeter(self, grid: List[List[int]]) -> int:
-        row, col = len(grid), len(grid[0])
-        directions = [[0,1],[1,0],[0,-1],[-1,0]]
+        directions = [[1,0],[-1,0],[0,1],[0,-1]]
+        n, m = len(grid), len(grid[0])
+        def inBound(r, c):
+            return 0 <= r < n and 0 <= c < m
         visited = set()
-        def isValid(i, j):
-            return 0 <= i < row and 0 <= j < col and grid[i][j] == 1
         perimeter = 0
-        def dfs(row, col):
+        def dfs(r, c):
             nonlocal perimeter
-            visited.add((row, col))
+            visited.add((r,c))
             for x, y in directions:
-                if not isValid(row + x, col + y) and (row + x, col + y) not in visited:
+                if not inBound(x+r, y+c) or grid[x+r][y+c] == 0:
                     perimeter += 1
-                    continue
-                if isValid(row + x, col + y) and (row + x, col + y) not in visited:
-                    dfs(row + x, col + y)
-        for i in range(row):
-            for j in range(col):
-                if grid[i][j] == 1 and (i, j) not in visited:
-                    dfs(i, j)
-        return perimeter
+                elif inBound(x+r, y+c) and grid[x+r][y+c] == 1 and (x+r,y+c) not in visited:
+                    dfs(x + r, y + c)
+            return perimeter
+        
+        for i in range(n):
+            for j in range(m):
+                if grid[i][j] == 1:
+                    return dfs(i,j)
