@@ -2,13 +2,13 @@ class Solution:
     def maxScore(self, cardPoints: List[int], k: int) -> int:
         l, r = 0, len(cardPoints) - k
         currSum = 0
-        for i in range(r):
+        for i in range(r, len(cardPoints)):
             currSum += cardPoints[i]
-        minSum = currSum
+        maxSum = currSum
         while r < len(cardPoints):
-            currSum -= cardPoints[l]
-            currSum += cardPoints[r]
-            minSum = min(minSum, currSum)
+            currSum += cardPoints[l]
+            currSum -= cardPoints[r]
+            maxSum = max(maxSum, currSum)
             l += 1
             r += 1
-        return sum(cardPoints) - minSum
+        return maxSum
