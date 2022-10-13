@@ -3,15 +3,10 @@ class Solution:
         currSum = 0
         l, r = 0, 0
         ans = float('inf')
-        while l < len(nums):
+        for r in range(len(nums)):
+            currSum += nums[r]
             while currSum >= target:
-                ans = min(ans, r - l)
+                ans = min(ans, r - l + 1)
                 currSum -= nums[l]
                 l += 1
-            if r >= len(nums):
-                break
-            currSum += nums[r]
-            r += 1
-            if currSum >= target:
-                ans = min(ans, r - l)
         return ans if ans != float('inf') else 0
