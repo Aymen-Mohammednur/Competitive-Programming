@@ -9,19 +9,34 @@ class Solution:
         if not root:
             return TreeNode(val)
         curr = root
-        def insert(curr):
-            if curr:
-                if val > curr.val:
-                    if curr.right:
-                        return insert(curr.right)
-                    else:
-                        curr.right = TreeNode(val)
-                        return
+        # def insert(curr):
+        #     if curr:
+        #         if val > curr.val:
+        #             if curr.right:
+        #                 return insert(curr.right)
+        #             else:
+        #                 curr.right = TreeNode(val)
+        #                 return
+        #         else:
+        #             if curr.left:
+        # ''                return insert(curr.left)
+        #             else:
+        #                 curr.left = TreeNode(val)
+        #                 return
+        # insert(curr)
+        # return root
+        flag = True
+        while flag:
+            if val > curr.val:
+                if curr.right:
+                    curr = curr.right
                 else:
-                    if curr.left:
-                        return insert(curr.left)
-                    else:
-                        curr.left = TreeNode(val)
-                        return
-        insert(curr)
+                    curr.right = TreeNode(val)
+                    flag = False
+            else:
+                if curr.left:
+                    curr = curr.left
+                else:
+                    curr.left = TreeNode(val)
+                    flag = False
         return root
