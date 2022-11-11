@@ -5,6 +5,7 @@ class Solution:
         res = 0
         for i in range(len(points)):
             slopes = {}
+            maxSlope = 0
             for j in range(i + 1, len(points)):
                 x1, y1 = points[i]
                 x2, y2 = points[j]
@@ -16,6 +17,6 @@ class Solution:
                     slopes[slope] += 1
                 else:
                     slopes[slope] = 2
-            if len(slopes):
-                res = max(res, max(slopes.values()))
+                maxSlope = max(maxSlope, slopes[slope])
+            res = max(res, maxSlope)
         return res
