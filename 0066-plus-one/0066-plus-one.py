@@ -9,5 +9,5 @@ class Solution:
                 digits[i] += 1
                 return digits
         if carry == 1:
-            digits.insert(0, 1)
+            digits = [1] + digits
         return digits
