@@ -23,4 +23,9 @@ class Solution:
             self.dfs(0, col, pacific, heights)
             self.dfs(self.n - 1, col, atlantic, heights)
         
-        return pacific & atlantic
+        res = []
+        for i in range(self.n):
+            for j in range(self.m):
+                if (i,j) in pacific and (i,j) in atlantic:
+                    res.append([i,j])
+        return res
