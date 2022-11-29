@@ -1,9 +1,9 @@
 class Solution:
     def reverseBits(self, n: int) -> int:
-        reverse = []
+        reverse = 0
         for i in range(32):
             if n & (1 << i):
-                reverse.append('1')
+                reverse |= 1 << (31 - i)
             else:
-                reverse.append('0')
-        return int(''.join(reverse), 2)
+                reverse |= 0 << (31 - i)
+        return reverse
