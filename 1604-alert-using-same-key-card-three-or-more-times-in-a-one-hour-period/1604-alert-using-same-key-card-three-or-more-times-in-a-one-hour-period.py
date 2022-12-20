@@ -14,10 +14,12 @@ class Solution:
         for name in mapping:
             times = mapping[name]
             times.sort()
-            l = 0
-            for r in range(2, len(times)):
-                if times[r] - times[l] <= 60:
+            queue = deque()
+            for time in times:
+                while queue and time - queue[0] > 60:
+                    queue.popleft()
+                queue.append(time)
+                if len(queue) >= 3:
                     res.append(name)
                     break
-                l += 1
         return sorted(res)
