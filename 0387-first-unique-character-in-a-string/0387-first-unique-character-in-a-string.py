@@ -1,10 +1,13 @@
 class Solution:
     def firstUniqChar(self, s: str) -> int:
-        counter = {}
-        for char in s:
-            counter[char] = 1 + counter.get(char, 0)
+        store = {}
+        seen = set()
         for i in range(len(s)):
-            char = s[i]
-            if counter[char] == 1:
-                return i
+            if s[i] not in seen:
+                seen.add(s[i])
+                store[s[i]] = i
+            elif s[i] in store:
+                del store[s[i]]
+        if store:
+            return min(store.values())
         return -1
