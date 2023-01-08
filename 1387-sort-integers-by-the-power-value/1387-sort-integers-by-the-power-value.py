@@ -1,20 +1,20 @@
 class Solution:
     def getKth(self, lo: int, hi: int, k: int) -> int:
         memo = {1:0}
-        def dp(n):
-            if n in memo:
-                return memo[n]
-            if n == 1:
+        def power_value(num):
+            if memo.get(num):
+                return memo[num]
+            if num == 1:
                 return 0
-            if n % 2 == 0:
-                memo[n] = dp(n // 2) + 1
-                return memo[n]
+            if num % 2 == 0:
+                memo[num] = power_value(num / 2) + 1
+                return memo[num]
             else:
-                memo[n] = dp((3 * n) + 1) + 1
-                return memo[n]
+                memo[num] = power_value((3 * num) + 1) + 1
+                return memo[num]
         power = []
         for i in range(lo, hi + 1):
             power.append(i)
-            dp(i)
-        power.sort(key = lambda x: memo[x])
+            power_value(i)
+        power.sort(key=lambda x:memo[x])
         return power[k - 1]
