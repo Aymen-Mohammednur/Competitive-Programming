@@ -14,10 +14,9 @@ class Solution:
             size = len(queue)
             for i in range(size):
                 curr = queue.popleft()
-                if curr.right:
-                    queue.append(curr.right)
                 if curr.left:
                     queue.append(curr.left)
-                if i == 0:
-                    answer.append(curr.val)
+                if curr.right:
+                    queue.append(curr.right)
+            answer.append(curr.val)
         return answer
