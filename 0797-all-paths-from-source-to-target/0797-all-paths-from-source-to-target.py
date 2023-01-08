@@ -4,7 +4,6 @@ class Solution:
         def backtrack(curr, path):
             if curr == len(graph) - 1:
                 paths.append(path.copy())
-                return
             for neigh in graph[curr]:
                 path.append(neigh)
                 backtrack(neigh, path)
